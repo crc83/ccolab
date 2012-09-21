@@ -1,0 +1,1811 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="CollabSoap7001Service" targetNamespace="http://v7001.api.service.ccollab.smartbear.com/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://v7001.api.service.ccollab.smartbear.com/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                   targetNamespace="http://v7001.api.service.ccollab.smartbear.com/"
+                   xmlns:tns="http://v7001.api.service.ccollab.smartbear.com/"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="accept" type="tns:accept"/>
+            <xs:element name="acceptAt" type="tns:acceptAt"/>
+            <xs:element name="acceptAtResponse" type="tns:acceptAtResponse"/>
+            <xs:element name="acceptConversation" type="tns:acceptConversation"/>
+            <xs:element name="acceptConversationResponse" type="tns:acceptConversationResponse"/>
+            <xs:element name="acceptResponse" type="tns:acceptResponse"/>
+            <xs:element name="addReviewURLs" type="tns:addReviewURLs"/>
+            <xs:element name="addReviewURLsResponse" type="tns:addReviewURLsResponse"/>
+            <xs:element name="cancelReview" type="tns:cancelReview"/>
+            <xs:element name="cancelReviewResponse" type="tns:cancelReviewResponse"/>
+            <xs:element name="checkLoginTicket" type="tns:checkLoginTicket"/>
+            <xs:element name="checkLoginTicketResponse" type="tns:checkLoginTicketResponse"/>
+            <xs:element name="createComment" type="tns:createComment"/>
+            <xs:element name="createCommentAt" type="tns:createCommentAt"/>
+            <xs:element name="createCommentAtResponse" type="tns:createCommentAtResponse"/>
+            <xs:element name="createCommentResponse" type="tns:createCommentResponse"/>
+            <xs:element name="createDefect" type="tns:createDefect"/>
+            <xs:element name="createDefectAt" type="tns:createDefectAt"/>
+            <xs:element name="createDefectAtResponse" type="tns:createDefectAtResponse"/>
+            <xs:element name="createDefectResponse" type="tns:createDefectResponse"/>
+            <xs:element name="createReview" type="tns:createReview"/>
+            <xs:element name="createReviewResponse" type="tns:createReviewResponse"/>
+            <xs:element name="deleteDefect" type="tns:deleteDefect"/>
+            <xs:element name="deleteDefectResponse" type="tns:deleteDefectResponse"/>
+            <xs:element name="deleteReview" type="tns:deleteReview"/>
+            <xs:element name="deleteReviewResponse" type="tns:deleteReviewResponse"/>
+            <xs:element name="findLatestVersion" type="tns:findLatestVersion"/>
+            <xs:element name="findLatestVersionResponse" type="tns:findLatestVersionResponse"/>
+            <xs:element name="finishReviewPhase" type="tns:finishReviewPhase"/>
+            <xs:element name="finishReviewPhaseResponse" type="tns:finishReviewPhaseResponse"/>
+            <xs:element name="getActionItems" type="tns:getActionItems"/>
+            <xs:element name="getActionItemsResponse" type="tns:getActionItemsResponse"/>
+            <xs:element name="getCurrentUser" type="tns:getCurrentUser"/>
+            <xs:element name="getCurrentUserResponse" type="tns:getCurrentUserResponse"/>
+            <xs:element name="getLoginTicket" type="tns:getLoginTicket"/>
+            <xs:element name="getLoginTicketResponse" type="tns:getLoginTicketResponse"/>
+            <xs:element name="getProductVersion" type="tns:getProductVersion"/>
+            <xs:element name="getProductVersionResponse" type="tns:getProductVersionResponse"/>
+            <xs:element name="markConversationRead" type="tns:markConversationRead"/>
+            <xs:element name="markConversationReadResponse" type="tns:markConversationReadResponse"/>
+            <xs:element name="markDefectExternal" type="tns:markDefectExternal"/>
+            <xs:element name="markDefectExternalResponse" type="tns:markDefectExternalResponse"/>
+            <xs:element name="markDefectFixed" type="tns:markDefectFixed"/>
+            <xs:element name="markDefectFixedResponse" type="tns:markDefectFixedResponse"/>
+            <xs:element name="markDefectNotExternal" type="tns:markDefectNotExternal"/>
+            <xs:element name="markDefectNotExternalResponse" type="tns:markDefectNotExternalResponse"/>
+            <xs:element name="markDefectOpen" type="tns:markDefectOpen"/>
+            <xs:element name="markDefectOpenResponse" type="tns:markDefectOpenResponse"/>
+            <xs:element name="pokeReviewParticipant" type="tns:pokeReviewParticipant"/>
+            <xs:element name="pokeReviewParticipantResponse" type="tns:pokeReviewParticipantResponse"/>
+            <xs:element name="redactComment" type="tns:redactComment"/>
+            <xs:element name="redactCommentResponse" type="tns:redactCommentResponse"/>
+            <xs:element name="rejectReview" type="tns:rejectReview"/>
+            <xs:element name="rejectReviewResponse" type="tns:rejectReviewResponse"/>
+            <xs:element name="reopenReview" type="tns:reopenReview"/>
+            <xs:element name="reopenReviewResponse" type="tns:reopenReviewResponse"/>
+            <xs:element name="setAnnotation" type="tns:setAnnotation"/>
+            <xs:element name="setAnnotationResponse" type="tns:setAnnotationResponse"/>
+            <xs:element name="startAnnotatingPhase" type="tns:startAnnotatingPhase"/>
+            <xs:element name="startAnnotatingPhaseResponse" type="tns:startAnnotatingPhaseResponse"/>
+            <xs:element name="uncancelReview" type="tns:uncancelReview"/>
+            <xs:element name="uncancelReviewResponse" type="tns:uncancelReviewResponse"/>
+            <xs:element name="updateDefect" type="tns:updateDefect"/>
+            <xs:element name="updateDefectResponse" type="tns:updateDefectResponse"/>
+            <xs:element name="updateReview" type="tns:updateReview"/>
+            <xs:element name="updateReviewCustomFields" type="tns:updateReviewCustomFields"/>
+            <xs:element name="updateReviewCustomFieldsResponse" type="tns:updateReviewCustomFieldsResponse"/>
+            <xs:element name="updateReviewResponse" type="tns:updateReviewResponse"/>
+            <xs:element name="waitReview" type="tns:waitReview"/>
+            <xs:element name="waitReviewResponse" type="tns:waitReviewResponse"/>
+            <xs:complexType name="setAnnotation">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element name="versionID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="comment" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="setAnnotationResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="markDefectExternal">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markDefectExternalResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="deleteDefect">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deleteDefectResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="reopenReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="reopenReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getCurrentUser">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getCurrentUserResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:user"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="user">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="fullName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="login" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markDefectOpen">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markDefectOpenResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getProductVersion">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getProductVersionResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createComment">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="comment" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createCommentResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="acceptAt">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="location" type="tns:location"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="location">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="lineLocation">
+                <xs:complexContent>
+                    <xs:extension base="tns:location">
+                        <xs:sequence>
+                            <xs:element name="lineNumber" type="xs:int"/>
+                            <xs:element name="reviewID" type="xs:int"/>
+                            <xs:element name="versionID" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="coordLocation">
+                <xs:complexContent>
+                    <xs:extension base="tns:location">
+                        <xs:sequence>
+                            <xs:element name="page" type="xs:int"/>
+                            <xs:element name="reviewID" type="xs:int"/>
+                            <xs:element name="versionID" type="xs:int"/>
+                            <xs:element name="x" type="xs:int"/>
+                            <xs:element name="y" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="labelLocation">
+                <xs:complexContent>
+                    <xs:extension base="tns:location">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="label" type="xs:string"/>
+                            <xs:element name="reviewID" type="xs:int"/>
+                            <xs:element name="versionID" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="conversationLocation">
+                <xs:complexContent>
+                    <xs:extension base="tns:location">
+                        <xs:sequence>
+                            <xs:element name="conversationID" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="overallLocation">
+                <xs:complexContent>
+                    <xs:extension base="tns:location">
+                        <xs:sequence>
+                            <xs:element name="reviewID" type="xs:int"/>
+                            <xs:element name="versionID" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="reviewLocation">
+                <xs:complexContent>
+                    <xs:extension base="tns:location">
+                        <xs:sequence>
+                            <xs:element name="reviewID" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="acceptAtResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="updateDefect">
+                <xs:sequence>
+                    <xs:element name="defectID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="comment" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="customField" type="tns:customField"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="customField">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="key" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="abstractCollection">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="abstractList">
+                <xs:complexContent>
+                    <xs:extension base="tns:abstractCollection">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="arrayList">
+                <xs:complexContent>
+                    <xs:extension base="tns:abstractList">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="updateDefectResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="uncancelReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="uncancelReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="createCommentAt">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="location" type="tns:location"/>
+                    <xs:element minOccurs="0" name="comment" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createCommentAtResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getActionItems">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getActionItemsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:actionItem"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="actionItem">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="nextActionText" type="xs:string"/>
+                    <xs:element minOccurs="0" name="text" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createDefect">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="comment" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="customField" type="tns:customField"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createDefectResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="rejectReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="reason" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="rejectReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="acceptConversation">
+                <xs:sequence>
+                    <xs:element name="conversationID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="acceptConversationResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="waitReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="waitingUntil" type="tns:activityTypeSpec"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="waitReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getLoginTicket">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="login" type="xs:string"/>
+                    <xs:element minOccurs="0" name="password" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getLoginTicketResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="checkLoginTicket">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="checkLoginTicketResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="cancelReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="cancelReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="markConversationRead">
+                <xs:sequence>
+                    <xs:element name="conversationID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markConversationReadResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="accept">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="acceptResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="createDefectAt">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="location" type="tns:location"/>
+                    <xs:element minOccurs="0" name="comment" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="customField" type="tns:customField"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createDefectAtResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="finishReviewPhase">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="finishedUntil" type="tns:activityTypeSpec"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="finishReviewPhaseResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="addReviewURLs">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="url" type="xs:string"/>
+                    <xs:element minOccurs="0" name="uploadComment" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addReviewURLsResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="markDefectNotExternal">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markDefectNotExternalResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="findLatestVersion">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="filePath" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="findLatestVersionResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markDefectFixed">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="markDefectFixedResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="updateReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="title" type="xs:string"/>
+                    <xs:element minOccurs="0" name="groupGuid" type="xs:string"/>
+                    <xs:element minOccurs="0" name="deadline" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="displayChangeListAs" type="tns:displayChangeListAsSpec"/>
+                    <xs:element minOccurs="0" name="accessibleBy" type="tns:reviewAccessSpec"/>
+                    <xs:element minOccurs="0" name="templateName" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="updateReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="updateReviewCustomFields">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="customField" type="tns:customField"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="updateReviewCustomFieldsResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="pokeReviewParticipant">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                    <xs:element minOccurs="0" name="participantLogin" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="pokeReviewParticipantResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="startAnnotatingPhase">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="startAnnotatingPhaseResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="createReview">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="userlogin" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createReviewResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="redactComment">
+                <xs:sequence>
+                    <xs:element name="commentID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="redactCommentResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="deleteReview">
+                <xs:sequence>
+                    <xs:element name="reviewID" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deleteReviewResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:simpleType name="activityTypeSpec">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ANY"/>
+                    <xs:enumeration value="AUTHOR"/>
+                    <xs:enumeration value="FILE"/>
+                    <xs:enumeration value="POKE"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="displayChangeListAsSpec">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="SINGLE"/>
+                    <xs:enumeration value="DISTINCT"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="reviewAccessSpec">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ANYONE"/>
+                    <xs:enumeration value="GROUP_OR_PARTICIPANTS"/>
+                    <xs:enumeration value="GROUP"/>
+                    <xs:enumeration value="PARTICIPANTS"/>
+                    <xs:enumeration value="GROUP_PARTICIPANTS"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="ServerNotInitializedException" type="tns:ServerNotInitializedException"/>
+            <xs:complexType name="ServerNotInitializedException">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:element name="NotAuthorizedException" type="tns:NotAuthorizedException"/>
+            <xs:complexType name="NotAuthorizedException">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:element name="ServiceException" type="tns:ServiceException"/>
+            <xs:complexType name="ServiceException">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getLoginTicket">
+        <wsdl:part element="tns:getLoginTicket" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createCommentAt">
+        <wsdl:part element="tns:createCommentAt" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createReviewResponse">
+        <wsdl:part element="tns:createReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="finishReviewPhaseResponse">
+        <wsdl:part element="tns:finishReviewPhaseResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="acceptAtResponse">
+        <wsdl:part element="tns:acceptAtResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectExternalResponse">
+        <wsdl:part element="tns:markDefectExternalResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createDefectResponse">
+        <wsdl:part element="tns:createDefectResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCurrentUser">
+        <wsdl:part element="tns:getCurrentUser" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markConversationRead">
+        <wsdl:part element="tns:markConversationRead" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectFixed">
+        <wsdl:part element="tns:markDefectFixed" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="rejectReview">
+        <wsdl:part element="tns:rejectReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addReviewURLs">
+        <wsdl:part element="tns:addReviewURLs" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getActionItems">
+        <wsdl:part element="tns:getActionItems" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="acceptResponse">
+        <wsdl:part element="tns:acceptResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createReview">
+        <wsdl:part element="tns:createReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setAnnotationResponse">
+        <wsdl:part element="tns:setAnnotationResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteReview">
+        <wsdl:part element="tns:deleteReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateReview">
+        <wsdl:part element="tns:updateReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createCommentAtResponse">
+        <wsdl:part element="tns:createCommentAtResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="startAnnotatingPhase">
+        <wsdl:part element="tns:startAnnotatingPhase" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="reopenReview">
+        <wsdl:part element="tns:reopenReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getProductVersion">
+        <wsdl:part element="tns:getProductVersion" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteDefect">
+        <wsdl:part element="tns:deleteDefect" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="redactComment">
+        <wsdl:part element="tns:redactComment" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="finishReviewPhase">
+        <wsdl:part element="tns:finishReviewPhase" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateReviewCustomFieldsResponse">
+        <wsdl:part element="tns:updateReviewCustomFieldsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkLoginTicketResponse">
+        <wsdl:part element="tns:checkLoginTicketResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="rejectReviewResponse">
+        <wsdl:part element="tns:rejectReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectExternal">
+        <wsdl:part element="tns:markDefectExternal" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createDefectAt">
+        <wsdl:part element="tns:createDefectAt" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createDefectAtResponse">
+        <wsdl:part element="tns:createDefectAtResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateReviewCustomFields">
+        <wsdl:part element="tns:updateReviewCustomFields" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCurrentUserResponse">
+        <wsdl:part element="tns:getCurrentUserResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createCommentResponse">
+        <wsdl:part element="tns:createCommentResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pokeReviewParticipantResponse">
+        <wsdl:part element="tns:pokeReviewParticipantResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectNotExternal">
+        <wsdl:part element="tns:markDefectNotExternal" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ServiceException">
+        <wsdl:part element="tns:ServiceException" name="ServiceException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getLoginTicketResponse">
+        <wsdl:part element="tns:getLoginTicketResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="redactCommentResponse">
+        <wsdl:part element="tns:redactCommentResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="startAnnotatingPhaseResponse">
+        <wsdl:part element="tns:startAnnotatingPhaseResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setAnnotation">
+        <wsdl:part element="tns:setAnnotation" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectOpenResponse">
+        <wsdl:part element="tns:markDefectOpenResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="waitReviewResponse">
+        <wsdl:part element="tns:waitReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markConversationReadResponse">
+        <wsdl:part element="tns:markConversationReadResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkLoginTicket">
+        <wsdl:part element="tns:checkLoginTicket" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="accept">
+        <wsdl:part element="tns:accept" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectFixedResponse">
+        <wsdl:part element="tns:markDefectFixedResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="NotAuthorizedException">
+        <wsdl:part element="tns:NotAuthorizedException" name="NotAuthorizedException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pokeReviewParticipant">
+        <wsdl:part element="tns:pokeReviewParticipant" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="cancelReview">
+        <wsdl:part element="tns:cancelReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="acceptConversation">
+        <wsdl:part element="tns:acceptConversation" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateDefectResponse">
+        <wsdl:part element="tns:updateDefectResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createComment">
+        <wsdl:part element="tns:createComment" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectNotExternalResponse">
+        <wsdl:part element="tns:markDefectNotExternalResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="acceptConversationResponse">
+        <wsdl:part element="tns:acceptConversationResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="findLatestVersionResponse">
+        <wsdl:part element="tns:findLatestVersionResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteDefectResponse">
+        <wsdl:part element="tns:deleteDefectResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getActionItemsResponse">
+        <wsdl:part element="tns:getActionItemsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="markDefectOpen">
+        <wsdl:part element="tns:markDefectOpen" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="cancelReviewResponse">
+        <wsdl:part element="tns:cancelReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateReviewResponse">
+        <wsdl:part element="tns:updateReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ServerNotInitializedException">
+        <wsdl:part element="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addReviewURLsResponse">
+        <wsdl:part element="tns:addReviewURLsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="uncancelReviewResponse">
+        <wsdl:part element="tns:uncancelReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="uncancelReview">
+        <wsdl:part element="tns:uncancelReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateDefect">
+        <wsdl:part element="tns:updateDefect" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteReviewResponse">
+        <wsdl:part element="tns:deleteReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getProductVersionResponse">
+        <wsdl:part element="tns:getProductVersionResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="reopenReviewResponse">
+        <wsdl:part element="tns:reopenReviewResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="waitReview">
+        <wsdl:part element="tns:waitReview" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="findLatestVersion">
+        <wsdl:part element="tns:findLatestVersion" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createDefect">
+        <wsdl:part element="tns:createDefect" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="acceptAt">
+        <wsdl:part element="tns:acceptAt" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="CodeCollaborator">
+        <wsdl:operation name="setAnnotation">
+            <wsdl:input message="tns:setAnnotation" name="setAnnotation">
+            </wsdl:input>
+            <wsdl:output message="tns:setAnnotationResponse" name="setAnnotationResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectExternal">
+            <wsdl:input message="tns:markDefectExternal" name="markDefectExternal">
+            </wsdl:input>
+            <wsdl:output message="tns:markDefectExternalResponse" name="markDefectExternalResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDefect">
+            <wsdl:input message="tns:deleteDefect" name="deleteDefect">
+            </wsdl:input>
+            <wsdl:output message="tns:deleteDefectResponse" name="deleteDefectResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="reopenReview">
+            <wsdl:input message="tns:reopenReview" name="reopenReview">
+            </wsdl:input>
+            <wsdl:output message="tns:reopenReviewResponse" name="reopenReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCurrentUser">
+            <wsdl:input message="tns:getCurrentUser" name="getCurrentUser">
+            </wsdl:input>
+            <wsdl:output message="tns:getCurrentUserResponse" name="getCurrentUserResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectOpen">
+            <wsdl:input message="tns:markDefectOpen" name="markDefectOpen">
+            </wsdl:input>
+            <wsdl:output message="tns:markDefectOpenResponse" name="markDefectOpenResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getProductVersion">
+            <wsdl:input message="tns:getProductVersion" name="getProductVersion">
+            </wsdl:input>
+            <wsdl:output message="tns:getProductVersionResponse" name="getProductVersionResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createComment">
+            <wsdl:input message="tns:createComment" name="createComment">
+            </wsdl:input>
+            <wsdl:output message="tns:createCommentResponse" name="createCommentResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="acceptAt">
+            <wsdl:input message="tns:acceptAt" name="acceptAt">
+            </wsdl:input>
+            <wsdl:output message="tns:acceptAtResponse" name="acceptAtResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateDefect">
+            <wsdl:input message="tns:updateDefect" name="updateDefect">
+            </wsdl:input>
+            <wsdl:output message="tns:updateDefectResponse" name="updateDefectResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="uncancelReview">
+            <wsdl:input message="tns:uncancelReview" name="uncancelReview">
+            </wsdl:input>
+            <wsdl:output message="tns:uncancelReviewResponse" name="uncancelReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createCommentAt">
+            <wsdl:input message="tns:createCommentAt" name="createCommentAt">
+            </wsdl:input>
+            <wsdl:output message="tns:createCommentAtResponse" name="createCommentAtResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getActionItems">
+            <wsdl:input message="tns:getActionItems" name="getActionItems">
+            </wsdl:input>
+            <wsdl:output message="tns:getActionItemsResponse" name="getActionItemsResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createDefect">
+            <wsdl:input message="tns:createDefect" name="createDefect">
+            </wsdl:input>
+            <wsdl:output message="tns:createDefectResponse" name="createDefectResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="rejectReview">
+            <wsdl:input message="tns:rejectReview" name="rejectReview">
+            </wsdl:input>
+            <wsdl:output message="tns:rejectReviewResponse" name="rejectReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="acceptConversation">
+            <wsdl:input message="tns:acceptConversation" name="acceptConversation">
+            </wsdl:input>
+            <wsdl:output message="tns:acceptConversationResponse" name="acceptConversationResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="waitReview">
+            <wsdl:input message="tns:waitReview" name="waitReview">
+            </wsdl:input>
+            <wsdl:output message="tns:waitReviewResponse" name="waitReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLoginTicket">
+            <wsdl:input message="tns:getLoginTicket" name="getLoginTicket">
+            </wsdl:input>
+            <wsdl:output message="tns:getLoginTicketResponse" name="getLoginTicketResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="checkLoginTicket">
+            <wsdl:input message="tns:checkLoginTicket" name="checkLoginTicket">
+            </wsdl:input>
+            <wsdl:output message="tns:checkLoginTicketResponse" name="checkLoginTicketResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="cancelReview">
+            <wsdl:input message="tns:cancelReview" name="cancelReview">
+            </wsdl:input>
+            <wsdl:output message="tns:cancelReviewResponse" name="cancelReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markConversationRead">
+            <wsdl:input message="tns:markConversationRead" name="markConversationRead">
+            </wsdl:input>
+            <wsdl:output message="tns:markConversationReadResponse" name="markConversationReadResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="accept">
+            <wsdl:input message="tns:accept" name="accept">
+            </wsdl:input>
+            <wsdl:output message="tns:acceptResponse" name="acceptResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createDefectAt">
+            <wsdl:input message="tns:createDefectAt" name="createDefectAt">
+            </wsdl:input>
+            <wsdl:output message="tns:createDefectAtResponse" name="createDefectAtResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="finishReviewPhase">
+            <wsdl:input message="tns:finishReviewPhase" name="finishReviewPhase">
+            </wsdl:input>
+            <wsdl:output message="tns:finishReviewPhaseResponse" name="finishReviewPhaseResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addReviewURLs">
+            <wsdl:input message="tns:addReviewURLs" name="addReviewURLs">
+            </wsdl:input>
+            <wsdl:output message="tns:addReviewURLsResponse" name="addReviewURLsResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectNotExternal">
+            <wsdl:input message="tns:markDefectNotExternal" name="markDefectNotExternal">
+            </wsdl:input>
+            <wsdl:output message="tns:markDefectNotExternalResponse" name="markDefectNotExternalResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findLatestVersion">
+            <wsdl:input message="tns:findLatestVersion" name="findLatestVersion">
+            </wsdl:input>
+            <wsdl:output message="tns:findLatestVersionResponse" name="findLatestVersionResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectFixed">
+            <wsdl:input message="tns:markDefectFixed" name="markDefectFixed">
+            </wsdl:input>
+            <wsdl:output message="tns:markDefectFixedResponse" name="markDefectFixedResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateReview">
+            <wsdl:input message="tns:updateReview" name="updateReview">
+            </wsdl:input>
+            <wsdl:output message="tns:updateReviewResponse" name="updateReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateReviewCustomFields">
+            <wsdl:input message="tns:updateReviewCustomFields" name="updateReviewCustomFields">
+            </wsdl:input>
+            <wsdl:output message="tns:updateReviewCustomFieldsResponse" name="updateReviewCustomFieldsResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="pokeReviewParticipant">
+            <wsdl:input message="tns:pokeReviewParticipant" name="pokeReviewParticipant">
+            </wsdl:input>
+            <wsdl:output message="tns:pokeReviewParticipantResponse" name="pokeReviewParticipantResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startAnnotatingPhase">
+            <wsdl:input message="tns:startAnnotatingPhase" name="startAnnotatingPhase">
+            </wsdl:input>
+            <wsdl:output message="tns:startAnnotatingPhaseResponse" name="startAnnotatingPhaseResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createReview">
+            <wsdl:input message="tns:createReview" name="createReview">
+            </wsdl:input>
+            <wsdl:output message="tns:createReviewResponse" name="createReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="redactComment">
+            <wsdl:input message="tns:redactComment" name="redactComment">
+            </wsdl:input>
+            <wsdl:output message="tns:redactCommentResponse" name="redactCommentResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteReview">
+            <wsdl:input message="tns:deleteReview" name="deleteReview">
+            </wsdl:input>
+            <wsdl:output message="tns:deleteReviewResponse" name="deleteReviewResponse">
+            </wsdl:output>
+            <wsdl:fault message="tns:NotAuthorizedException" name="NotAuthorizedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServerNotInitializedException" name="ServerNotInitializedException">
+            </wsdl:fault>
+            <wsdl:fault message="tns:ServiceException" name="ServiceException">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CollabSoap7001ServiceSoapBinding" type="tns:CodeCollaborator">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="setAnnotation">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="setAnnotation">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="setAnnotationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDefect">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deleteDefect">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteDefectResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectExternal">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="markDefectExternal">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="markDefectExternalResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="reopenReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="reopenReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="reopenReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCurrentUser">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getCurrentUser">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getCurrentUserResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectOpen">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="markDefectOpen">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="markDefectOpenResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getProductVersion">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getProductVersion">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getProductVersionResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createComment">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="createComment">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createCommentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="acceptAt">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="acceptAt">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="acceptAtResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createCommentAt">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="createCommentAt">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createCommentAtResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="uncancelReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="uncancelReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="uncancelReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateDefect">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="updateDefect">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="updateDefectResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getActionItems">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getActionItems">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getActionItemsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createDefect">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="createDefect">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createDefectResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="rejectReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="rejectReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="rejectReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="acceptConversation">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="acceptConversation">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="acceptConversationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLoginTicket">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getLoginTicket">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getLoginTicketResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="waitReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="waitReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="waitReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="cancelReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="cancelReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="cancelReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="checkLoginTicket">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="checkLoginTicket">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="checkLoginTicketResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markConversationRead">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="markConversationRead">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="markConversationReadResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="accept">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="accept">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="acceptResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createDefectAt">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="createDefectAt">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createDefectAtResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="finishReviewPhase">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="finishReviewPhase">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="finishReviewPhaseResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addReviewURLs">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="addReviewURLs">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addReviewURLsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findLatestVersion">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="findLatestVersion">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="findLatestVersionResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectNotExternal">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="markDefectNotExternal">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="markDefectNotExternalResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="markDefectFixed">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="markDefectFixed">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="markDefectFixedResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="updateReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="updateReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateReviewCustomFields">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="updateReviewCustomFields">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="updateReviewCustomFieldsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="pokeReviewParticipant">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="pokeReviewParticipant">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="pokeReviewParticipantResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startAnnotatingPhase">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="startAnnotatingPhase">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="startAnnotatingPhaseResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="createReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteReview">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deleteReview">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteReviewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="redactComment">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="redactComment">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="redactCommentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="NotAuthorizedException">
+                <soap:fault name="NotAuthorizedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServerNotInitializedException">
+                <soap:fault name="ServerNotInitializedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CollabSoap7001Service">
+        <wsdl:port binding="tns:CollabSoap7001ServiceSoapBinding" name="CollabSoap7001Port">
+            <soap:address location="http://11.120.102.48/services/CodeCollaborator_7001"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

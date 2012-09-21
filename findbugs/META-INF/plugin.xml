@@ -1,0 +1,22 @@
+<idea-plugin version="2">
+    <name>Code collaborator integration</name>
+    <description>This plugin allows for smooth integration with code collaborator tool</description>
+    <version>1.0.0</version>
+    <vendor>com.griddynamics</vendor>
+    <idea-version since-build="8000"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="CColab" icon="favicon.png" anchor="right"
+                    factoryClass="com.griddynamics.ccollab.CColabToolWindowFactory"/>
+    </extensions>
+</idea-plugin>
