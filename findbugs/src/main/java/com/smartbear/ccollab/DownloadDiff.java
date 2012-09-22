@@ -1,4 +1,4 @@
-package com.griddynamics.ccollab;
+package com.smartbear.ccollab;
 
 import com.google.common.io.Files;
 import com.smartbear.ccollab.service.api.v7001.CodeCollaborator;

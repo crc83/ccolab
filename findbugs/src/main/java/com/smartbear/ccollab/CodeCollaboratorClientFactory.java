@@ -1,22 +1,19 @@
-package com.griddynamics.ccollab;
+package com.smartbear.ccollab;
 
-import com.smartbear.ccollab.service.api.v7001.ActionItem;
 import com.smartbear.ccollab.service.api.v7001.CodeCollaborator;
+import com.smartbear.ccollab.service.api.v7001.ServerNotInitializedException_Exception;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-
-import java.util.List;
 
 /**
  * Sample of getting Action Items from the server in Java with CXF:
  * Follows http://cxf.apache.org/docs/a-simple-jax-ws-service.html
  */
-public class ShowActionItems {
+public class CodeCollaboratorClientFactory {
 
-    public static void main(String[] args) throws Exception {
-
+    public static CodeCollaborator create(String username, String password) {
         // So, let's authenticate:
-        String username = args[0];
-        String password = args[1];
+        username = "yc14im2";
+        password = "xenu4btpp3";
 
         // Request an implementation of the interface CodeCollaborator from CXF:
         JaxWsProxyFactoryBean clientFactory = new JaxWsProxyFactoryBean();
@@ -28,21 +25,22 @@ public class ShowActionItems {
         // to send username/pass w/ every request.
         // More savvy clients should SAVE the login ticket (not the password)
         // and re-use it across invocations .
-        // Here, we just call getLoginTicket() every time ShowActionItems is run.
-        String ticket = client.getLoginTicket(username, password);
+        // Here, we just call getLoginTicket() every time CodeCollaboratorClientFactory is run.
+        String ticket = null;
+        try {
+            ticket = client.getLoginTicket(username, password);
+        } catch (ServerNotInitializedException_Exception e) {
+            throw new RuntimeException(e);
+        }
         if (ticket == null) {
-            System.out.println("Username/password incorrect.");
-            return;
+            throw new IllegalArgumentException("Username/password incorrect.");
         }
         // Methods that require authentication expect to find username/ticket in HTTP basic auth.
         // We'll create a new client that sends those with each request:
         clientFactory.setUsername(username);
         clientFactory.setPassword(ticket); // (Yep, ticket!  Not password.)
-        client = (CodeCollaborator) clientFactory.create();
-
-        final List<ActionItem> actionItems = client.getActionItems();
-        final ActionItem actionItem = actionItems.get(0);
-        final int latestVersion = client.findLatestVersion(654, "");
+        return (CodeCollaborator) clientFactory.create();
     }
+
 }
  

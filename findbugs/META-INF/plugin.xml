@@ -17,6 +17,6 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow id="CColab" icon="favicon.png" anchor="right"
-                    factoryClass="com.griddynamics.ccollab.CColabToolWindowFactory"/>
+                    factoryClass="com.smartbear.ccollab.CColabToolWindowFactory"/>
     </extensions>
 </idea-plugin>
