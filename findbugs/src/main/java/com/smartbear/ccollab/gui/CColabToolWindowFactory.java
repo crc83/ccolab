@@ -1,10 +1,13 @@
-package com.smartbear.ccollab;
+package com.smartbear.ccollab.gui;
 
+import com.google.common.base.Strings;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
+import com.smartbear.ccollab.CColabSettings;
+import com.smartbear.ccollab.CodeCollaboratorClientFactory;
 import com.smartbear.ccollab.service.api.v7001.ActionItem;
 import com.smartbear.ccollab.service.api.v7001.CodeCollaborator;
 import com.smartbear.ccollab.service.api.v7001.NotAuthorizedException_Exception;
@@ -25,7 +28,14 @@ public class CColabToolWindowFactory implements ToolWindowFactory {
         final JTree view = new JTree();
         final DefaultMutableTreeNode root = new DefaultMutableTreeNode("Корень");
         view.setModel(new DefaultTreeModel(root));
-        final CodeCollaborator codeCollaborator = CodeCollaboratorClientFactory.create("", "");
+        final CColabSettings settings = CColabSettings.getInstance();
+        if (Strings.isNullOrEmpty(settings.getLogin())) {
+            CColabLoginDialog dialog = new CColabLoginDialog(project);
+            dialog.show();
+        }
+        final CodeCollaborator codeCollaborator = CodeCollaboratorClientFactory.create(
+                settings.getHost(), settings.getLogin(), settings.getPassword()
+        );
         try {
             final List<ActionItem> actionItems = codeCollaborator.getActionItems();
             for (ActionItem actionItem : actionItems) {
