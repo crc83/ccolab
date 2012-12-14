@@ -8,13 +8,22 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'C:/Program Files/JetBrains/IntelliJ IDEA 11.1.1/lib/', include: '*.jar')
+    compile fileTree(dir: '/Applications/IntelliJ IDEA 12.app/lib/', include: '*.jar')
     runtime 'wsdl4j:wsdl4j:1.6.2'
     runtime 'org.apache.neethi:neethi:3.0.2'
     runtime 'org.apache.ws.xmlschema:xmlschema-core:2.0.3'
     compile group: 'com.google.guava', name: 'guava', version: '13.0.1'
-    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxws', version: '2.6.2'
-    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxrs', version: '2.6.2'
+    compile group: 'javax.ws.rs:javax.ws.rs-api:2.0-m10'
+    compile group: 'javax.ws.rs:jsr311-api:1.1.1'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxws', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxrs', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-simple', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-bindings-soap', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-bindings-xml', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-databinding-jaxb', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-transport-http', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-core', version: '2.7.0'
+    compile group: 'org.apache.cxf', name: 'cxf-api', version: '2.7.0'
     compile group: 'com.google.code.findbugs', name: 'findbugs', version: '2.0.1'
     testCompile group: 'junit', name: 'junit', version: '4.7'
 }
