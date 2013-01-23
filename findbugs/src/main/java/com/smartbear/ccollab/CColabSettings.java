@@ -1,5 +1,6 @@
 package com.smartbear.ccollab;
 
+import com.google.common.base.Strings;
 import com.intellij.ide.passwordSafe.MasterPasswordUnavailableException;
 import com.intellij.ide.passwordSafe.PasswordSafe;
 import com.intellij.ide.passwordSafe.PasswordSafeException;
@@ -17,7 +18,8 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.Messages;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import static com.google.common.base.Objects.firstNonNull;
 
 @State(
         name = "CColabSettings",
@@ -36,6 +38,7 @@ public class CColabSettings implements PersistentStateComponent<Element> {
     private static final String CCOLAB_SETTINGS_PASSWORD_KEY = "CCOLAB_SETTINGS_PASSWORD_KEY";
 
     private String myLogin;
+    private String myTicket;
     private String myHost;
     private boolean passwordChanged = false;
 
@@ -61,7 +64,7 @@ public class CColabSettings implements PersistentStateComponent<Element> {
             LOG.info("Couldn't store password for key [" + CCOLAB_SETTINGS_PASSWORD_KEY + "]", e);
             masterPasswordRefused = true;
         } catch (Exception e) {
-            Messages.showErrorDialog("Error happened while storing password for github", "Error");
+            Messages.showErrorDialog("Error happened while storing password for ccolab", "Error");
             LOG.info("Couldn't get password for key [" + CCOLAB_SETTINGS_PASSWORD_KEY + "]", e);
         }
         passwordChanged = false;
@@ -77,16 +80,21 @@ public class CColabSettings implements PersistentStateComponent<Element> {
             setLogin(element.getAttributeValue(LOGIN));
             setHost(element.getAttributeValue(HOST));
         } catch (Exception e) {
-            LOG.error("Error happened while loading github settings: " + e);
+            LOG.error("Error happened while loading code collaborator settings: " + e);
         }
     }
 
     @NotNull
     public String getLogin() {
-        return myLogin != null ? myLogin : "";
+        return Strings.nullToEmpty(myLogin);
     }
 
-    @Nullable
+    @NotNull
+    public String getTicket() {
+        return Strings.nullToEmpty(myTicket);
+    }
+
+    @NotNull
     public String getPassword() {
         LOG.assertTrue(!ProgressManager.getInstance().hasProgressIndicator(), "Password should not be accessed under modal progress");
         String password;
@@ -112,20 +120,24 @@ public class CColabSettings implements PersistentStateComponent<Element> {
         // Store password in memory
         try {
             passwordSafe.getMemoryProvider().storePassword(ProjectManager.getInstance().getDefaultProject(),
-                    CColabSettings.class, CCOLAB_SETTINGS_PASSWORD_KEY, password != null ? password : "");
+                    CColabSettings.class, CCOLAB_SETTINGS_PASSWORD_KEY, Strings.nullToEmpty(password));
         } catch (PasswordSafeException e) {
             LOG.info("Couldn't store password for key [" + CCOLAB_SETTINGS_PASSWORD_KEY + "]", e);
         }
         passwordChanged = false;
-        return password != null ? password : "";
+        return Strings.nullToEmpty(password);
     }
 
     public String getHost() {
-        return myHost != null ? myHost : "localhost";
+        return firstNonNull(myHost, "localhost");
     }
 
     public void setLogin(final String login) {
-        myLogin = login != null ? login : "";
+        myLogin = Strings.nullToEmpty(login);
+    }
+
+    public void setTicket(final String ticket) {
+        myTicket = Strings.nullToEmpty(ticket);
     }
 
     public void setPassword(final String password) {
@@ -134,13 +146,13 @@ public class CColabSettings implements PersistentStateComponent<Element> {
             final MemoryPasswordSafe memoryProvider = ((PasswordSafeImpl) PasswordSafe.getInstance()).getMemoryProvider();
             memoryProvider.storePassword(ProjectManager.getInstance().getDefaultProject(),
                     CColabSettings.class, CCOLAB_SETTINGS_PASSWORD_KEY,
-                    password != null ? password : "");
+                    Strings.nullToEmpty(password));
         } catch (PasswordSafeException e) {
             LOG.info("Couldn't get password for key [" + CCOLAB_SETTINGS_PASSWORD_KEY + "]", e);
         }
     }
 
     public void setHost(final String host) {
-        myHost = host != null ? host : "localhost";
+        myHost = firstNonNull(host, "localhost");
     }
 }

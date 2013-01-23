@@ -1,6 +1,6 @@
 <idea-plugin version="2">
     <name>Code collaborator integration</name>
-    <description>This plugin allows for smooth integration with code collaborator tool</description>
+    <description>This plugin allows for smooth integration with code collaborator review tool</description>
     <version>1.0.0</version>
     <vendor>com.griddynamics</vendor>
     <idea-version since-build="8000"/>
@@ -20,6 +20,27 @@
                     factoryClass="com.smartbear.ccollab.gui.CColabToolWindowFactory"/>
         <applicationService serviceInterface="com.smartbear.ccollab.CColabSettings"
                             serviceImplementation="com.smartbear.ccollab.CColabSettings"/>
-
+        <projectConfigurable instance="com.smartbear.ccollab.actions.CColabSettingsConfigurable"/>
     </extensions>
+    <actions>
+        <group id="CColab.Toolbar" description="CodeCollaborator plugin toolbar">
+            <action id="CColab.Refresh" description="Refresh"
+                    class="com.smartbear.ccollab.actions.RefreshAction"
+                    icon="/actions/refresh.png"/>
+
+            <action id="CColab.DownloadAllSources" class="com.smartbear.ccollab.actions.DownloadPatchAction"
+                    text="Download Sources" description="Download and apply patch from server"
+                    icon="AllIcons.Actions.Download">
+            </action>
+
+            <separator/>
+
+            <action id="CColab.ShowSettings"
+                    class="com.smartbear.ccollab.actions.EditSettingsAction" text="CColab Settings"
+                    description="Edit ccolab integration settings for the current project"
+                    icon="AllIcons.General.ProjectSettings">
+            </action>
+        </group>
+
+    </actions>
 </idea-plugin>

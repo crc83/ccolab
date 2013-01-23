@@ -42,18 +42,18 @@ public class DownloadDiff {
 
         final File rootDir = Files.createTempDir();
         com.smartbear.ccollab.rs.Files sf = JAXRSClientFactory.create("http://11.120.102.48", com.smartbear.ccollab.rs.Files.class);
-        final byte[] diff = sf.downloadFiles(username, ticket, 653, "latest");
+
+        com.smartbear.ccollab.rs.Diff diff = JAXRSClientFactory.create("http://11.120.102.48", com.smartbear.ccollab.rs.Diff.class);
+        String value = diff.getDiff(username, ticket, 653);
+        System.out.println("value = " + value);
+
+
+        final byte[] bytes = sf.downloadFiles(username, ticket, 653, "latest");
         final File to = new File(rootDir, "files.zip");
-        Files.write(diff, to);
+        Files.write(bytes, to);
 
         unZipIt(to, rootDir);
-        System.out.println(diff);
-
-//        final SVNClientManager svnClientManager = SVNClientManager.newInstance();
-//        final SVNUpdateClient updateClient = svnClientManager.getUpdateClient();
-//        final long revision = updateClient.doCheckout(SVNURL.parseURIDecoded("https://vk-core.googlecode.com/svn/trunk"), Files.createTempDir(), SVNRevision.HEAD, SVNRevision.HEAD, SVNDepth.INFINITY, true);
-//        System.out.println("revision = " + revision);
-//        final SVNDiffClient diffClient = svnClientManager.getDiffClient();
+        System.out.println(bytes);
     }
 
     /**
@@ -96,8 +96,5 @@ public class DownloadDiff {
 
         zis.closeEntry();
         zis.close();
-
-        System.out.println("Done");
-
     }
 }

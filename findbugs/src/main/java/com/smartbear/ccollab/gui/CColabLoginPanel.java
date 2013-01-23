@@ -26,6 +26,9 @@ public class CColabLoginPanel {
         });
     }
 
+    public CColabLoginPanel() {
+    }
+
     public JComponent getPanel() {
         return myPane;
     }

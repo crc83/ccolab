@@ -4,6 +4,8 @@ import com.smartbear.ccollab.service.api.v7001.CodeCollaborator;
 import com.smartbear.ccollab.service.api.v7001.ServerNotInitializedException_Exception;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 
+import javax.ws.rs.ext.RuntimeDelegate;
+
 /**
  * Sample of getting Action Items from the server in Java with CXF:
  * Follows http://cxf.apache.org/docs/a-simple-jax-ws-service.html
@@ -16,6 +18,8 @@ public class CodeCollaboratorClientFactory {
      * @return
      */
     public static CodeCollaborator create(String host, String username, String password) {
+
+        System.getProperties().put(RuntimeDelegate.JAXRS_RUNTIME_DELEGATE_PROPERTY, "org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl");
 
         // Request an implementation of the interface CodeCollaborator from CXF:
         JaxWsProxyFactoryBean clientFactory = new JaxWsProxyFactoryBean();
