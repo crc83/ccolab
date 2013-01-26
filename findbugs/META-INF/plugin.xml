@@ -28,7 +28,7 @@
                     class="com.smartbear.ccollab.actions.RefreshAction"
                     icon="/actions/refresh.png"/>
 
-            <action id="CColab.DownloadAllSources" class="com.smartbear.ccollab.actions.DownloadPatchAction"
+            <action id="CColab.DownloadAllSources" class="com.smartbear.ccollab.actions.DownloadFilesAction"
                     text="Download Sources" description="Download and apply patch from server"
                     icon="AllIcons.Actions.Download">
             </action>

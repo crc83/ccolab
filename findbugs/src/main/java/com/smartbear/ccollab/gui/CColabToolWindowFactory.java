@@ -16,6 +16,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultTreeSelectionModel;
+import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
 
 /**
@@ -30,7 +32,9 @@ public class CColabToolWindowFactory implements ToolWindowFactory, DataProvider 
         view = new Tree();
         rootNode = new DefaultMutableTreeNode("Корень");
         view.setModel(new DefaultTreeModel(rootNode));
-
+        DefaultTreeSelectionModel selectionModel = new DefaultTreeSelectionModel();
+        selectionModel.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        view.setSelectionModel(selectionModel);
         panel.add(new JBScrollPane(view), BorderLayout.CENTER);
         ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
         Content content = contentFactory.createContent(panel, "", false);
